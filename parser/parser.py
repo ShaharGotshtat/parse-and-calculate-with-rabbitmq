@@ -9,6 +9,11 @@ def send_messages():
     phrases = read_input()
 
     for phrase in phrases:
+
+        if contains_digits(phrase):
+            print(f'Phrase {phrase} is invalid! it contains digits.')
+            continue
+
         parsed_phrase = parse_phrase(phrase)
         publish_message(channel, parsed_phrase)
 
@@ -20,9 +25,11 @@ def read_input():
         return file.read().split('\n')
 
 
-def parse_phrase(phrase):
-    print(phrase)
+def contains_digits(phrase):
+    return any(char.isdigit() for char in phrase)
 
+
+def parse_phrase(phrase):
     for word, number in WORDS_TO_DIGITS.items():
         phrase = phrase.replace(word, number)
 
