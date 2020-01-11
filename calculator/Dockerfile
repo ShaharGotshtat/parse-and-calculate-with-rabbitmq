@@ -2,7 +2,7 @@ FROM python:3.6
 
 WORKDIR /calculator
 
-COPY ./calculator/requirements.txt /calculator
+COPY requirements.txt /calculator
 RUN pip install -r requirements.txt
 
 COPY ./calculator/calculator.py /calculator

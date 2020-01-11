@@ -2,7 +2,7 @@ FROM python:3.6
 
 WORKDIR /parser
 
-COPY ./parser/requirements.txt /parser
+COPY requirements.txt /parser
 RUN pip install -r requirements.txt
 
 COPY ./parser/parser.py /parser
