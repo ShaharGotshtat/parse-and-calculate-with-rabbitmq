@@ -1,11 +1,11 @@
 import pika
 import json
-from consts import EXCHANGE, QUEUE, ROUTING_KEY
+from consts import EXCHANGE, QUEUE, ROUTING_KEY, HOST
 
 
-def get_rabbitmq_connection():
+def get_rabbitmq_connection(host):
     return pika.BlockingConnection(pika.ConnectionParameters(
-        host='rabbitmq',
+        host=host,
         port=5672,
         virtual_host='/',
         credentials=pika.PlainCredentials('guest', 'guest')))
@@ -35,7 +35,7 @@ def publish_message(channel, message):
 
 
 def read_messages(callback):
-    connection = get_rabbitmq_connection()
+    connection = get_rabbitmq_connection(HOST)
     channel = get_channel(connection)
     channel.basic_consume(
         queue=QUEUE,

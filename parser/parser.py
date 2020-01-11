@@ -3,7 +3,7 @@ from consts import *
 
 
 def send_messages():
-    connection = get_rabbitmq_connection()
+    connection = get_rabbitmq_connection(HOST)
     channel = get_channel(connection)
     create_and_bind_queue(channel)
     phrases = read_input()

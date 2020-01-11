@@ -1,3 +1,5 @@
+HOST = 'rabbitmq'  # 'rabbitmq' / 'localhost'
+
 EXCHANGE = 'parse_and_calculate_exchange'
 QUEUE = 'parse_and_calculate_queue'
 ROUTING_KEY = f'{EXCHANGE}.messages'
