@@ -1,0 +1,26 @@
+version: "3.2"
+services:
+    rabbitmq:
+        image: 'rabbitmq:3.6-management-alpine'
+        hostname: rabbitmq
+        ports:
+          - '5672:5672'
+          - '15672:15672'
+
+    parser:
+        build:
+          context: ./
+          dockerfile: ./parser/Dockerfile
+        depends_on:
+            - rabbitmq
+        # Few runs will fail before rabbitmq is ready
+        restart: on-failure
+
+    calculator:
+        build:
+          context: ./
+          dockerfile: ./calculator/Dockerfile
+        depends_on:
+            - rabbitmq
+        # Few runs will fail before rabbitmq is ready
+        restart: on-failure

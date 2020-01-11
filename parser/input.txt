@@ -1,0 +1,3 @@
+Two + Four
+Two + Four * Six
+Five Zero + Six * (Two + Three)
